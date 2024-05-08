@@ -1,9 +1,7 @@
-import { ReactNode } from 'react';
-
 import { cn } from '@/lib/utils';
 import { PaperIcon, RockIcon, ScissorsIcon } from '@/components/icons';
 
-type ActionButtonProps = {
+type HandButtonProps = {
   type: 'rock' | 'paper' | 'scissors';
 };
 
@@ -25,7 +23,7 @@ const actions = {
   },
 };
 
-const ActionButton = ({ type }: ActionButtonProps) => {
+const HandButton = ({ type }: HandButtonProps) => {
   const Icon = actions[type].icon;
 
   return (
@@ -54,4 +52,4 @@ const ActionButton = ({ type }: ActionButtonProps) => {
   );
 };
 
-export default ActionButton;
+export default HandButton;

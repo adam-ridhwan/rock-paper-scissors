@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import ActionButton from '@/components/action-button';
+import HandButton from '@/components/hand-button';
 
 export default function Home() {
   return (
@@ -19,10 +19,10 @@ export default function Home() {
 
       <div className='flex flex-1 flex-col items-center justify-center gap-8'>
         <div className='flex w-full flex-row justify-around pt-8'>
-          <ActionButton type='paper' />
-          <ActionButton type='scissors' />
+          <HandButton type='paper' />
+          <HandButton type='scissors' />
         </div>
-        <ActionButton type='rock' />
+        <HandButton type='rock' />
       </div>
 
       <div className='flex w-full justify-center'>
