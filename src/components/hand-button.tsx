@@ -42,7 +42,7 @@ const HandButton = ({
       onClick={onClick}
       className={cn(
         'relative flex aspect-square max-w-[300px] items-center justify-center rounded-full shadow-2xl',
-        { 'opacity-50': disabled },
+        { 'opacity-20': disabled },
         className
       )}
     >

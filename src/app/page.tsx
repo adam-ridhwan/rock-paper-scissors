@@ -48,6 +48,11 @@ const Home = () => {
     setHousePick(housePick);
     const winner = determineWinner(pick, housePick);
     setWinner(winner);
+
+    await handleReset();
+  };
+
+  const handleReset = async () => {
     await delay(2000);
     setUserPick(undefined);
     setHousePick(undefined);
@@ -84,65 +89,67 @@ const Home = () => {
         />
       </div>
 
-      <div className='flex flex-1 flex-col items-center justify-evenly gap-20 py-20'>
-        <div className='flex w-full flex-row justify-around gap-8'>
-          <div className='flex w-1/2 flex-col items-center gap-4 md:gap-8'>
-            <p className='relative z-50 line-clamp-1 h-10 text-center text-xl tracking-wide md:text-4xl'>
-              {userPick && 'YOU PICKED'}
-            </p>
-            {userPick && (
-              <HandButton
-                className='w-full'
-                handType={userPick}
-                isWinner={winner === 'user'}
-              />
-            )}
+      <div className='flex flex-1 flex-col'>
+        <div className='flex flex-1 flex-col justify-evenly py-10'>
+          <div className='flex w-full flex-row justify-around gap-8'>
+            <div className='flex w-1/2 flex-col items-center gap-4 md:gap-8'>
+              <p className='relative z-50 line-clamp-1 h-10 text-center text-xl tracking-wide md:text-4xl'>
+                {userPick && 'YOU PICKED'}
+              </p>
+              {userPick && (
+                <HandButton
+                  className='w-full'
+                  handType={userPick}
+                  isWinner={winner === 'user'}
+                />
+              )}
+            </div>
+
+            <div className='flex w-1/2 flex-col items-center gap-4 md:gap-8'>
+              <p className='relative z-50 line-clamp-1 h-10 text-center text-xl tracking-wide md:text-4xl'>
+                {housePick && 'THE HOUSE PICKED'}
+              </p>
+              {userPick && housePick && (
+                <HandButton
+                  className='w-full'
+                  handType={housePick}
+                  isWinner={winner === 'house'}
+                />
+              )}
+            </div>
           </div>
 
-          <div className='flex w-1/2 flex-col items-center gap-4 md:gap-8'>
-            <p className='relative z-50 line-clamp-1 h-10 text-center text-xl tracking-wide md:text-4xl'>
-              {housePick && 'THE HOUSE PICKED'}
-            </p>
-            {userPick && housePick && (
-              <HandButton
-                className='w-full'
-                handType={housePick}
-                isWinner={winner === 'house'}
-              />
-            )}
-          </div>
+          {userPick && winner && (
+            <div className='relative z-50 flex flex-col gap-4'>
+              <p className='text-center text-4xl font-bold text-primary md:text-6xl'>
+                {winner === 'user' && 'YOU WIN'}
+                {winner === 'house' && 'YOU LOSE'}
+                {winner === 'draw' && 'DRAW'}
+              </p>
+            </div>
+          )}
         </div>
 
-        {userPick && winner && (
-          <div className='flex flex-col gap-4'>
-            <p className='text-center text-4xl font-bold text-primary md:text-6xl'>
-              {winner === 'user' && 'YOU WIN'}
-              {winner === 'house' && 'YOU LOSE'}
-              {winner === 'draw' && 'DRAW'}
-            </p>
-          </div>
-        )}
-      </div>
-
-      <div className='flex w-full flex-row gap-4 py-8 md:gap-16 md:py-16'>
-        <HandButton
-          handType='rock'
-          disabled={!!winner}
-          onClick={() => handlePick('rock')}
-          className='w-1/3'
-        />
-        <HandButton
-          handType='paper'
-          disabled={!!winner}
-          onClick={() => handlePick('paper')}
-          className='w-1/3'
-        />
-        <HandButton
-          handType='scissors'
-          disabled={!!winner}
-          onClick={() => handlePick('scissors')}
-          className='w-1/3'
-        />
+        <div className='flex gap-4 pb-8 md:gap-16 md:pb-16'>
+          <HandButton
+            handType='rock'
+            disabled={!!winner}
+            onClick={() => handlePick('rock')}
+            className='size-1/3'
+          />
+          <HandButton
+            handType='paper'
+            disabled={!!winner}
+            onClick={() => handlePick('paper')}
+            className='size-1/3'
+          />
+          <HandButton
+            handType='scissors'
+            disabled={!!winner}
+            onClick={() => handlePick('scissors')}
+            className='size-1/3'
+          />
+        </div>
       </div>
 
       <div className='flex w-full justify-center gap-4'>
