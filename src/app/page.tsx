@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import HandButton from '@/components/hand-button';
+import RulesButton from '@/components/rules-button';
 
 export default function Home() {
   return (
@@ -26,9 +27,7 @@ export default function Home() {
       </div>
 
       <div className='flex w-full justify-center'>
-        <Button variant='outline' className='px-8 tracking-widest'>
-          RULES
-        </Button>
+        <RulesButton />
       </div>
     </main>
   );

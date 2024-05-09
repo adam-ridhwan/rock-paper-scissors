@@ -43,7 +43,11 @@ export const Logo = ({ className }: SVGProps) => (
 );
 
 export const RulesIcon = ({ className }: SVGProps) => (
-  <svg xmlns='http://www.w3.org/2000/svg' className={cn('', className)}>
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    viewBox='0 0 303.5 303.5'
+    className={cn('h-[350px]', className)}
+  >
     <defs>
       <linearGradient id='a' x1='50%' x2='50%' y1='0%' y2='100%'>
         <stop offset='0%' stopColor='#FFF' stopOpacity='.097' />
@@ -225,8 +229,8 @@ export const ScissorsIcon = ({ className }: SVGProps) => (
 export const CloseIcon = ({ className }: SVGProps) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    viewBox='-5 0 60 60'
-    className={cn('', className)}
+    viewBox='0 0 19 19'
+    className={cn('size-8', className)}
   >
     <path
       fill='#3B4262'
