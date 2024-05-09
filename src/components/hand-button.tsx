@@ -2,7 +2,9 @@ import { cn } from '@/lib/utils';
 import { PaperIcon, RockIcon, ScissorsIcon } from '@/components/icons';
 
 type HandButtonProps = {
-  type: 'rock' | 'paper' | 'scissors';
+  handType: 'rock' | 'paper' | 'scissors';
+  onClick?: () => void;
+  disabled?: boolean;
 };
 
 const actions = {
@@ -23,22 +25,26 @@ const actions = {
   },
 };
 
-const HandButton = ({ type }: HandButtonProps) => {
-  const Icon = actions[type].icon;
+const HandButton = ({ handType, onClick }: HandButtonProps) => {
+  const Icon = actions[handType].icon;
 
   return (
-    <button className='relative flex size-[144px] items-center justify-center rounded-full shadow-2xl md:size-[300px]'>
+    <button
+      disabled={onClick === undefined}
+      onClick={onClick}
+      className='relative flex size-[144px] items-center justify-center rounded-full shadow-2xl md:size-[300px]'
+    >
       <div
         className={cn(
           'absolute top-1.5 z-10 size-full rounded-full md:top-3',
-          actions[type].bg
+          actions[handType].bg
         )}
       />
 
       <div
         className={cn(
           'absolute z-10 size-full rounded-full bg-gradient-to-t',
-          actions[type].gradient
+          actions[handType].gradient
         )}
       />
 
