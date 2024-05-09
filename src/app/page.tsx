@@ -1,7 +1,9 @@
+'use client';
+
 import HandButton from '@/components/hand-button';
 import RulesButton from '@/components/rules-button';
 
-export default function Home() {
+const Home = () => {
   return (
     <main className='container flex min-h-dvh flex-col py-10'>
       <div className='flex flex-row items-center justify-between border border-muted-foreground p-4'>
@@ -20,12 +22,16 @@ export default function Home() {
       <div className='flex flex-1 flex-col items-center gap-8 pt-20'>
         <div className='flex w-full flex-row justify-around pt-8'>
           <div className='flex flex-col items-center gap-8'>
-            <p className='text-4xl'>You picked</p>
+            <p className='line-clamp-1 text-center text-4xl tracking-wide'>
+              YOU PICKED
+            </p>
             <HandButton type='paper' />
           </div>
 
-          <div className='flex flex-col items-center gap-8'>
-            <p className='text-4xl'>The House Picked</p>
+          <div className='flex flex-col items-center gap-8 text-center'>
+            <p className='line-clamp-1 text-center text-4xl tracking-wide'>
+              THE HOUSE PICKED
+            </p>
             <HandButton type='scissors' />
           </div>
         </div>
@@ -37,4 +43,5 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+export default Home;

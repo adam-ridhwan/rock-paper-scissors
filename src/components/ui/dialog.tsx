@@ -50,7 +50,7 @@ const DialogContent = React.forwardRef<
         data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 
         data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 
         data-[state=open]:slide-in-from-top-[48%] sm:h-fit 
-        sm:max-w-lg sm:rounded-lg`,
+        sm:max-w-fit sm:rounded-lg`,
         className
       )}
       {...props}
@@ -60,7 +60,7 @@ const DialogContent = React.forwardRef<
         className={`absolute bottom-28 right-1/2 h-fit w-fit translate-x-[50%] rounded-sm opacity-70 ring-offset-background 
         transition-opacity hover:opacity-100 disabled:pointer-events-none
         data-[state=open]:bg-primary data-[state=open]:text-muted-foreground 
-        sm:bottom-0 sm:right-5 sm:top-5 sm:translate-x-0`}
+        sm:bottom-0 sm:right-6 sm:top-6 sm:translate-x-0`}
       >
         <CloseIcon />
         <span className='sr-only'>Close</span>
@@ -105,7 +105,7 @@ const DialogTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      'py-20 text-4xl font-semibold leading-none tracking-tight text-primary-foreground sm:py-4',
+      'pb-20 pt-40 text-4xl font-semibold leading-none tracking-tight text-primary-foreground sm:pb-10 sm:pt-0',
       className
     )}
     {...props}

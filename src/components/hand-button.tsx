@@ -13,13 +13,13 @@ const actions = {
   },
   paper: {
     icon: PaperIcon,
-    bg: 'bg-[#C76C1B]',
-    gradient: 'from-[#ec9e0e] to-[#eca922]',
+    bg: 'bg-[#2A45C2]',
+    gradient: 'from-[#4865F4] to-[#5671F5]',
   },
   scissors: {
     icon: ScissorsIcon,
-    bg: 'bg-[#2A45C2]',
-    gradient: 'from-[#4865F4] to-[#5671F5]',
+    bg: 'bg-[#C76C1B]',
+    gradient: 'from-[#ec9e0e] to-[#eca922]',
   },
 };
 
