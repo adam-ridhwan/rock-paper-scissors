@@ -191,7 +191,7 @@ export const RockIcon = ({ className }: SVGProps) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     viewBox='-5 0 60 50'
-    className={cn('z-50 size-14 md:size-32', className)}
+    className={cn('z-50 w-[50%]', className)}
   >
     <path
       fill='#3B4262'
@@ -204,7 +204,7 @@ export const PaperIcon = ({ className }: SVGProps) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     viewBox='-5 0 60 60'
-    className={cn('z-50 size-14 md:size-32', className)}
+    className={cn('z-50 w-[50%]', className)}
   >
     <path
       fill='#3B4262'
@@ -217,7 +217,7 @@ export const ScissorsIcon = ({ className }: SVGProps) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     viewBox='-5 0 60 60'
-    className={cn('z-50 size-14 md:size-32', className)}
+    className={cn('z-50 w-[50%]', className)}
   >
     <path
       fill='#3B4262'

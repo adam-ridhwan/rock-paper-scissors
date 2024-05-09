@@ -5,6 +5,7 @@ import { useLocalStorage } from 'usehooks-ts';
 
 import { Hand, Winner } from '@/lib/types';
 import { cn, delay } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 import HandButton from '@/components/hand-button';
 import RulesButton from '@/components/rules-button';
 
@@ -16,7 +17,7 @@ const getRandomHand = (): Hand => {
 
 const Home = () => {
   const [isMounted, setIsMounted] = useState(false);
-  const [value, setValue, removeValue] = useLocalStorage('score', 0);
+  const [value, setValue] = useLocalStorage('score', 0);
 
   const [userPick, setUserPick] = useState<Hand>();
   const [housePick, setHousePick] = useState<Hand>();
@@ -83,18 +84,17 @@ const Home = () => {
         />
       </div>
 
-      <div className='flex flex-1 flex-col items-center gap-8 py-20'>
-        <div className='flex w-full flex-row justify-around pt-8'>
+      <div className='flex flex-1 flex-col items-center justify-evenly gap-20 py-20'>
+        <div className='flex w-full flex-row justify-around gap-8'>
           <div className='flex w-1/2 flex-col items-center gap-4 md:gap-8'>
             <p className='relative z-50 line-clamp-1 h-10 text-center text-xl tracking-wide md:text-4xl'>
               {userPick && 'YOU PICKED'}
             </p>
-            {userPick ? (
-              <HandButton handType={userPick} winner={winner === 'user'} />
-            ) : (
+            {userPick && (
               <HandButton
-                handType='paper'
-                onClick={() => handlePick('paper')}
+                className='w-full'
+                handType={userPick}
+                isWinner={winner === 'user'}
               />
             )}
           </div>
@@ -103,25 +103,18 @@ const Home = () => {
             <p className='relative z-50 line-clamp-1 h-10 text-center text-xl tracking-wide md:text-4xl'>
               {housePick && 'THE HOUSE PICKED'}
             </p>
-            {userPick ? (
-              housePick && (
-                <HandButton handType={housePick} winner={winner === 'house'} />
-              )
-            ) : (
+            {userPick && housePick && (
               <HandButton
-                handType='scissors'
-                onClick={() => handlePick('scissors')}
+                className='w-full'
+                handType={housePick}
+                isWinner={winner === 'house'}
               />
             )}
           </div>
         </div>
 
-        {!userPick && (
-          <HandButton handType='rock' onClick={() => handlePick('rock')} />
-        )}
-
         {userPick && winner && (
-          <div className='flex flex-col gap-4 pt-20'>
+          <div className='flex flex-col gap-4'>
             <p className='text-center text-4xl font-bold text-primary md:text-6xl'>
               {winner === 'user' && 'YOU WIN'}
               {winner === 'house' && 'YOU LOSE'}
@@ -131,8 +124,37 @@ const Home = () => {
         )}
       </div>
 
-      <div className='flex w-full justify-center'>
+      <div className='flex w-full flex-row gap-4 py-8 md:gap-16 md:py-16'>
+        <HandButton
+          handType='rock'
+          disabled={!!winner}
+          onClick={() => handlePick('rock')}
+          className='w-1/3'
+        />
+        <HandButton
+          handType='paper'
+          disabled={!!winner}
+          onClick={() => handlePick('paper')}
+          className='w-1/3'
+        />
+        <HandButton
+          handType='scissors'
+          disabled={!!winner}
+          onClick={() => handlePick('scissors')}
+          className='w-1/3'
+        />
+      </div>
+
+      <div className='flex w-full justify-center gap-4'>
         <RulesButton />
+        <Button
+          disabled={!!winner}
+          variant='outline'
+          onClick={() => setValue(0)}
+          className='px-8 tracking-widest'
+        >
+          RESET SCORE
+        </Button>
       </div>
     </main>
   );

@@ -4,7 +4,9 @@ import { PaperIcon, RockIcon, ScissorsIcon } from '@/components/icons';
 type HandButtonProps = {
   handType: 'rock' | 'paper' | 'scissors';
   onClick?: () => void;
-  winner?: boolean;
+  isWinner?: boolean;
+  disabled?: boolean;
+  className?: string;
 };
 
 const actions = {
@@ -25,23 +27,31 @@ const actions = {
   },
 };
 
-const HandButton = ({ handType, onClick, winner }: HandButtonProps) => {
+const HandButton = ({
+  handType,
+  onClick,
+  isWinner,
+  disabled,
+  className,
+}: HandButtonProps) => {
   const Icon = actions[handType].icon;
 
   return (
     <button
-      disabled={onClick === undefined}
+      disabled={disabled || onClick === undefined}
       onClick={onClick}
-      className='relative flex size-[144px] items-center justify-center rounded-full shadow-2xl md:size-[300px]'
+      className={cn(
+        'relative flex aspect-square max-w-[300px] items-center justify-center rounded-full shadow-2xl',
+        { 'opacity-50': disabled },
+        className
+      )}
     >
-      {winner && (
-        <div className='absolute top-1/2 size-[175%] -translate-y-[50%] rounded-full bg-[#223453]' />
-      )}
-      {winner && (
-        <div className='absolute top-1/2 size-[150%] -translate-y-[50%] rounded-full bg-[#273655]' />
-      )}
-      {winner && (
-        <div className='absolute top-1/2 size-[125%] -translate-y-[50%] rounded-full bg-[#2c3a58]' />
+      {isWinner && (
+        <>
+          <div className='absolute top-1/2 size-[175%] -translate-y-[50%] rounded-full bg-[#223453]' />
+          <div className='absolute top-1/2 size-[125%] -translate-y-[50%] rounded-full bg-[#2c3a58]' />
+          <div className='absolute top-1/2 size-[150%] -translate-y-[50%] rounded-full bg-[#273655]' />
+        </>
       )}
 
       <div

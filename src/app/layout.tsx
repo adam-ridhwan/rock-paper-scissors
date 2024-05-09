@@ -17,8 +17,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang='en' className='dark' style={{ colorScheme: 'dark' }}>
-      <body className={`${barlow.className} min-h-dvh overflow-x-hidden`}>
+    <html
+      lang='en'
+      className='dark overflow-hidden'
+      style={{ colorScheme: 'dark' }}
+    >
+      <body className={`${barlow.className} min min-h-dvh overflow-hidden`}>
         {children}
       </body>
     </html>
