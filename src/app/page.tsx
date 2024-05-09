@@ -48,11 +48,6 @@ const Home = () => {
     setHousePick(housePick);
     const winner = determineWinner(pick, housePick);
     setWinner(winner);
-
-    await handleReset();
-  };
-
-  const handleReset = async () => {
     await delay(2000);
     setUserPick(undefined);
     setHousePick(undefined);
