@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import HandButton from '@/components/hand-button';
 import RulesButton from '@/components/rules-button';
 
@@ -18,10 +17,17 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='flex flex-1 flex-col items-center justify-center gap-8'>
+      <div className='flex flex-1 flex-col items-center gap-8 pt-20'>
         <div className='flex w-full flex-row justify-around pt-8'>
-          <HandButton type='paper' />
-          <HandButton type='scissors' />
+          <div className='flex flex-col items-center gap-8'>
+            <p className='text-4xl'>You picked</p>
+            <HandButton type='paper' />
+          </div>
+
+          <div className='flex flex-col items-center gap-8'>
+            <p className='text-4xl'>The House Picked</p>
+            <HandButton type='scissors' />
+          </div>
         </div>
         <HandButton type='rock' />
       </div>
