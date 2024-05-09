@@ -4,7 +4,7 @@ import { PaperIcon, RockIcon, ScissorsIcon } from '@/components/icons';
 type HandButtonProps = {
   handType: 'rock' | 'paper' | 'scissors';
   onClick?: () => void;
-  disabled?: boolean;
+  winner?: boolean;
 };
 
 const actions = {
@@ -25,7 +25,7 @@ const actions = {
   },
 };
 
-const HandButton = ({ handType, onClick }: HandButtonProps) => {
+const HandButton = ({ handType, onClick, winner }: HandButtonProps) => {
   const Icon = actions[handType].icon;
 
   return (
@@ -34,6 +34,16 @@ const HandButton = ({ handType, onClick }: HandButtonProps) => {
       onClick={onClick}
       className='relative flex size-[144px] items-center justify-center rounded-full shadow-2xl md:size-[300px]'
     >
+      {winner && (
+        <div className='absolute top-1/2 size-[175%] -translate-y-[50%] rounded-full bg-[#223453]' />
+      )}
+      {winner && (
+        <div className='absolute top-1/2 size-[150%] -translate-y-[50%] rounded-full bg-[#273655]' />
+      )}
+      {winner && (
+        <div className='absolute top-1/2 size-[125%] -translate-y-[50%] rounded-full bg-[#2c3a58]' />
+      )}
+
       <div
         className={cn(
           'absolute top-1.5 z-10 size-full rounded-full md:top-3',

@@ -86,11 +86,11 @@ const Home = () => {
       <div className='flex flex-1 flex-col items-center gap-8 py-20'>
         <div className='flex w-full flex-row justify-around pt-8'>
           <div className='flex w-1/2 flex-col items-center gap-4 md:gap-8'>
-            <p className='line-clamp-1 h-10 text-center text-xl tracking-wide md:text-4xl'>
+            <p className='relative z-50 line-clamp-1 h-10 text-center text-xl tracking-wide md:text-4xl'>
               {userPick && 'YOU PICKED'}
             </p>
             {userPick ? (
-              <HandButton handType={userPick} />
+              <HandButton handType={userPick} winner={winner === 'user'} />
             ) : (
               <HandButton
                 handType='paper'
@@ -100,11 +100,13 @@ const Home = () => {
           </div>
 
           <div className='flex w-1/2 flex-col items-center gap-4 md:gap-8'>
-            <p className='line-clamp-1 h-10 text-center text-xl tracking-wide md:text-4xl'>
+            <p className='relative z-50 line-clamp-1 h-10 text-center text-xl tracking-wide md:text-4xl'>
               {housePick && 'THE HOUSE PICKED'}
             </p>
             {userPick ? (
-              housePick && <HandButton handType={housePick} />
+              housePick && (
+                <HandButton handType={housePick} winner={winner === 'house'} />
+              )
             ) : (
               <HandButton
                 handType='scissors'
